@@ -24,6 +24,8 @@ const userschema = new mongoose.Schema({
     password:{
         type: String,
         required: true,
+        minlength: [6,"Password should be more than 6 character long"],
+
         select: false, //when we find user password dont go to db
     },
     socketId:{
