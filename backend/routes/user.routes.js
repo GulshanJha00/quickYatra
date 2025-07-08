@@ -9,4 +9,10 @@ router.post("/register",[
     body('password').isLength({min:5}).withMessage("Minimum length of 5 is required")
 
 ], userController.registerUser)
+
+router.post("/login",[
+    body("email").isEmail().withMessage("Invalid Email"),
+    body("password").isLength({min:5}).withMessage("Minimum length of 5 is required")
+], userController.loginUser)
+
 module.exports = router
