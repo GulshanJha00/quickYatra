@@ -218,3 +218,110 @@ curl -X POST http://localhost:3001/users/login \
     "password": "yourpassword"
   }'
 ```
+# User Profile API Documentation
+
+## Endpoint
+
+`GET /users/profile`
+
+## Description
+
+Returns the authenticated user's profile information. Requires a valid JWT token in the request (usually sent as a cookie or in the `Authorization` header).
+
+## Authentication
+
+- **Required:** Yes (JWT token)
+
+## Responses
+
+### Success
+
+- **Status Code:** `200 OK`
+- **Body:**
+  ```json
+  {
+    "user": {
+      "_id": "user_id",
+      "fullname": {
+        "firstname": "John",
+        "lastname": "Doe"
+      },
+      "email": "john.doe@example.com",
+      "socketId": null
+    }
+  }
+  ```
+
+#### Example Success Response
+
+```json
+{
+  "user": {
+    "_id": "60f7c2b5e1d2c8a1b8e4d123",
+    "fullname": {
+      "firstname": "John",
+      "lastname": "Doe"
+    },
+    "email": "john.doe@example.com",
+    "socketId": null
+  }
+}
+```
+
+### Unauthorized
+
+- **Status Code:** `401 Unauthorized`
+- **Body:**
+  ```json
+  {
+    "message": "Authentication required"
+  }
+  ```
+
+---
+
+# User Logout API Documentation
+
+## Endpoint
+
+`GET /users/logout`
+
+## Description
+
+Logs out the authenticated user by clearing the authentication token and blacklisting it. Requires a valid JWT token in the request.
+
+## Authentication
+
+- **Required:** Yes (JWT token)
+
+## Responses
+
+### Success
+
+- **Status Code:** `200 OK`
+- **Body:**
+  ```json
+  {
+    "message": "Logout successful"
+  }
+  ```
+
+#### Example Success Response
+
+```json
+{
+  "message": "Logout successful"
+}
+```
+
+### Unauthorized
+
+- **Status Code:** `401 Unauthorized`
+- **Body:**
+  ```json
+  {
+    "message": "Authentication required"
+  }
+  ```
+
+---
