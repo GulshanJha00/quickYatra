@@ -45,3 +45,7 @@ userschema.statics.hashPassword = async function(password){
 }
 
 module.exports = mongoose.model('user',userschema);
+
+//methods	On a document (an instance of a user)	user.generateAuthToken()
+
+//statics	On the Model itself	userModel.hashPassword(...)
